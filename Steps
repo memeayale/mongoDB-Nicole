@@ -1,0 +1,21 @@
+Begin by spinning up an f1 micro with Centos 7 as the boot disk.
+
+Open an ssh connection and sudo su to gain rootly powers
+
+Then copy and paste all these lines at once onto the command line to add the MongoDB repository to our machine:
+
+echo '[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc' > /etc/yum.repos.d/mongodb-org-3.2.repo
+
+Then do a yum repolist. You should see MongoDB in your repository list
+Next, install MongoDB using the command yum -y install mongodb-org
+Start MongoDB by typing systemctl start mongod
+Look at the status of MongoDB using this command systemctl status mongod to make sure it is running (if you see processes it is running)
+Then we can log into the shell using the command mongo
+Congratulations! You've just installed and logged into your first MongoDB server!
+
+For the rest of the EC assignment we'll be using the tutorial posted here: https://docs.mongodb.com/getting-started/shell/introduction/
